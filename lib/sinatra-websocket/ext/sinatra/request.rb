@@ -5,7 +5,8 @@ module SinatraWebsocket
 
         # Taken from skinny https://github.com/sj26/skinny and updated to support Firefox
         def websocket?
-          env['HTTP_CONNECTION'].split(',').map(&:strip).map(&:downcase).include?('upgrade') &&
+          env['HTTP_CONNECTION'] && env['HTTP_UPGRADE'] &&
+            env['HTTP_CONNECTION'].split(',').map(&:strip).map(&:downcase).include?('upgrade') &&
             env['HTTP_UPGRADE'].downcase == 'websocket'
         end
 
