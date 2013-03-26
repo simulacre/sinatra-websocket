@@ -7,7 +7,14 @@ module SinatraWebsocket
   class Connection < ::EventMachine::WebSocket::Connection
     class << self
       def from_env(env, options = {})
-        socket      = env[Thin::Request::ASYNC_CALLBACK].receiver
+        if env.include?('async.orig_callback')
+          callback_key = 'async.orig_callback'
+        elsif env.include?(Thin::Request::ASYNC_CALLBACK)
+          callback_key = Thin::Request::ASYNC_CALLBACK
+        else
+          raise 'Could not find an async callback in our environment!'
+        end
+        socket     = env[callback_key].receiver
         request    = request_from_env(env)
         connection = Connection.new(env, socket, :debug => options[:debug])
         yield(connection) if block_given?
