@@ -28,7 +28,7 @@ get '/' do
         EM.next_tick { settings.sockets.each{|s| s.send(msg) } }
       end
       ws.onclose do
-        warn("wetbsocket closed")
+        warn("websocket closed")
         settings.sockets.delete(ws)
       end
     end
