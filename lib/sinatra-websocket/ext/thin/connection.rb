@@ -44,11 +44,8 @@ module SinatraWebsocket
         # Skip standard unbind it this is
         # WebSocket connection
         def unbind_with_websocket
-          if self.websocket?
-            self.websocket.unbind
-          else
-            unbind_without_websocket
-          end
+          self.websocket? && self.websocket.unbind
+          unbind_without_websocket
         end
 
         # Send flash policy file if requested
