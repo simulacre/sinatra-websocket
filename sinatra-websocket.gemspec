@@ -12,6 +12,6 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_dependency 'eventmachine'
-  s.add_dependency 'thin', '>= 1.3.1'
+  s.add_dependency 'thin', '>= 1.3.1', '<2.0.0'
   s.add_dependency 'em-websocket', '~>0.3.6'
 end
