@@ -13,17 +13,17 @@ module SinatraWebsocket
             alias :receive_data_without_flash_policy_file :receive_data
             alias :receive_data :receive_data_with_flash_policy_file
 
-            alias :pre_process_without_websocket :pre_process
-            alias :pre_process :pre_process_with_websocket
+            alias :process_without_websocket :process
+            alias :process :process_with_websocket
           end
         end
 
         attr_accessor :websocket
 
         # Set 'async.connection' Rack env
-        def pre_process_with_websocket
+        def process_with_websocket
           @request.env['async.connection'] = self
-          pre_process_without_websocket
+          process_without_websocket
         end
 
         # Is this connection WebSocket?
