@@ -1,3 +1,7 @@
+## 0.3.1
+ - [#10](https://github.com/simulacre/sinatra-websocket/issues/10): Event machine not initialized error on close
+ - [#12](https://github.com/simulacre/sinatra-websocket/issues/12): Don't use Thin 2.0.0
+
 ## 0.3.0
  - [#6](https://github.com/simulacre/sinatra-websocket/pull/6): check for the existence of async.orig_callback - [@crazed](https://github.com/crazed)
 
