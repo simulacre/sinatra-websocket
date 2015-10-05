@@ -46,7 +46,8 @@ __END__
           return function(msg){ el.innerHTML = msg + '<br />' + el.innerHTML; }
         }(document.getElementById('msgs'));
 
-        var ws       = new WebSocket('ws://' + window.location.host + window.location.pathname);
+        var proto = location.protocol === 'https:' ? 'wss' : 'ws'
+        var ws       = new WebSocket(proto + '://' + window.location.host + window.location.pathname);
         ws.onopen    = function()  { show('websocket opened'); };
         ws.onclose   = function()  { show('websocket closed'); }
         ws.onmessage = function(m) { show('websocket message: ' +  m.data); };
